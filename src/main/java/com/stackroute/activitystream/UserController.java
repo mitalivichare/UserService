@@ -21,6 +21,8 @@ import com.stackroute.activitystream.model.User;
 @RestController
 public class UserController {
 	
+	//use private variables/objects ---check all the classes --- general comment.
+	
 	@Autowired
 	UserDAO userDAO;
 	
@@ -54,6 +56,7 @@ public class UserController {
 	{
 		try
 		{
+			//need to check whether same id exist or not
 			userDAO.createUser(user);
 			logger.debug("Registration Sucessfull");
 			return new ResponseEntity<User>(user,HttpStatus.OK);
@@ -68,6 +71,7 @@ public class UserController {
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public ResponseEntity<?> authenticateUser(@RequestBody User user,HttpSession session)
 	{
+		//why newUser?
 		User newUser=userDAO.authenticateUser(user);
 		if(newUser != null)
 		{
@@ -100,6 +104,8 @@ public class UserController {
 	{
 		try
 		{
+			//before updating, check whether user is exist or not.
+			//if the user does not exist, you can not update.
 			userDAO.updateUser(user);
 			logger.debug("Registration Sucessfull");
 			return new ResponseEntity<User>(user,HttpStatus.OK);
