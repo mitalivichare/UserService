@@ -15,6 +15,8 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 public class UserServiceApplication {
 	
+	
+	//can remove this method as you used annotations.
 	@Bean  
     public SessionFactory sessionFactory(HibernateEntityManagerFactory hemf){  
         return hemf.getSessionFactory();  
